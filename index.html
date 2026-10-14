@@ -1,1 +1,899 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gargi Bhardwaj's Power BI, Microsoft Fabric and Data Analytics portfolio.">
+  <title>Gargi Bhardwaj | BI & Analytics Portfolio</title>
+
+  <style>
+    :root {
+      --navy: #10243a;
+      --teal: #00a99d;
+      --light: #f5f8fb;
+      --text: #263548;
+      --muted: #697789;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid #e4eaf0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .logo span { color: var(--teal); }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: var(--teal); }
+
+    .hero {
+      padding: 90px 0 75px;
+      background: linear-gradient(130deg, #eaf7f7, #ffffff 60%, #edf2fa);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: #008b82;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.12;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+
+    h1 span { color: var(--teal); }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 620px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid var(--navy);
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: white;
+    }
+
+    .btn-secondary {
+      color: var(--navy);
+      background: white;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .hero-card {
+      background: var(--navy);
+      color: white;
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: 0 18px 45px #10243a20;
+    }
+
+    .hero-card .mini-label {
+      color: #9ee8df;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .hero-card h2 {
+      font-size: 25px;
+      margin: 10px 0;
+    }
+
+    .hero-card p {
+      font-size: 14px;
+      color: #d5e1ed;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      background: #ffffff12;
+      padding: 16px;
+      border-radius: 10px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 22px;
+      color: #72e0d3;
+    }
+
+    .stat span {
+      font-size: 12px;
+      color: #d5e1ed;
+    }
+
+    section { padding: 72px 0; }
+
+    .section-heading {
+      margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(27px, 4vw, 36px);
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 700px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .filter {
+      padding: 9px 16px;
+      border: 1px solid #dce4ec;
+      background: white;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .filter.active, .filter:hover {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      background: white;
+      border: 1px solid #e5ebf1;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px #10243a12;
+    }
+
+    .project-card[hidden] { display: none; }
+
+    .preview {
+      min-height: 190px;
+      padding: 20px;
+      background: linear-gradient(135deg, #10243a, #185268);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .preview.finance {
+      background: linear-gradient(135deg, #243c5a, #596c8c);
+    }
+
+    .preview.fabric {
+      background: linear-gradient(135deg, #153c42, #087e83);
+    }
+
+    .preview.customers {
+      background: linear-gradient(135deg, #342b58, #6559a5);
+    }
+
+    .preview.hr {
+      background: linear-gradient(135deg, #59402b, #ae7841);
+    }
+
+    .preview-title {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .preview-label {
+      font-size: 11px;
+      color: #c7e8ed;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .mock-chart {
+      display: flex;
+      gap: 8px;
+      align-items: end;
+      height: 65px;
+      margin-top: 16px;
+    }
+
+    .mock-chart i {
+      display: block;
+      width: 13%;
+      border-radius: 4px 4px 0 0;
+      background: #65ded0;
+    }
+
+    .mock-chart i:nth-child(1) { height: 35%; }
+    .mock-chart i:nth-child(2) { height: 60%; }
+    .mock-chart i:nth-child(3) { height: 45%; }
+    .mock-chart i:nth-child(4) { height: 82%; }
+    .mock-chart i:nth-child(5) { height: 68%; }
+    .mock-chart i:nth-child(6) { height: 100%; }
+    .mock-chart i:nth-child(7) { height: 76%; }
+
+    .project-content { padding: 22px; }
+
+    .tag {
+      display: inline-block;
+      background: #e9f8f6;
+      color: #007c73;
+      border-radius: 5px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .project-content h3 {
+      color: var(--navy);
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .project-link {
+      color: #008c82;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .notice {
+      margin-top: 24px;
+      padding: 14px 16px;
+      background: #fff8e7;
+      border: 1px solid #f0dfad;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #735b20;
+    }
+
+    .fabric-section { background: white; }
+
+    .fabric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .fabric-steps {
+      display: grid;
+      gap: 13px;
+      margin-top: 22px;
+    }
+
+    .fabric-step {
+      border: 1px solid #e4eaf0;
+      border-radius: 9px;
+      padding: 14px;
+      display: flex;
+      gap: 13px;
+      align-items: center;
+    }
+
+    .step-number {
+      min-width: 35px;
+      height: 35px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #007f77;
+      background: #e4f7f4;
+      font-weight: 800;
+    }
+
+    .fabric-step strong { color: var(--navy); }
+    .fabric-step p { font-size: 13px; color: var(--muted); }
+
+    .fabric-visual {
+      background: #10243a;
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+    }
+
+    .fabric-visual h3 { margin-bottom: 20px; }
+
+    .pipeline-node {
+      text-align: center;
+      background: #ffffff12;
+      border: 1px solid #ffffff35;
+      padding: 13px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .arrow {
+      text-align: center;
+      color: #70e1d4;
+      padding: 5px;
+      font-size: 21px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .skill {
+      background: white;
+      border: 1px solid #e4eaf0;
+      padding: 19px;
+      border-radius: 10px;
+    }
+
+    .skill h3 {
+      color: var(--navy);
+      font-size: 15px;
+      margin-bottom: 7px;
+    }
+
+    .skill p { color: var(--muted); font-size: 13px; }
+
+    .about-section { background: white; }
+
+    .about-box {
+      background: var(--light);
+      border-radius: 14px;
+      padding: 30px;
+      border-left: 4px solid var(--teal);
+    }
+
+    .about-box p { margin-bottom: 14px; color: var(--muted); }
+
+    .contact-box {
+      background: var(--navy);
+      color: white;
+      padding: 45px;
+      text-align: center;
+      border-radius: 18px;
+    }
+
+    .contact-box h2 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .contact-box p {
+      color: #d5e1ed;
+      margin: auto;
+      max-width: 600px;
+    }
+
+    .contact-box .btn {
+      margin-top: 24px;
+      background: var(--teal);
+      color: white;
+      border-color: var(--teal);
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid, .fabric-grid { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding: 60px 0; }
+    }
+
+    @media (max-width: 560px) {
+      nav { padding: 16px 0; align-items: flex-start; flex-direction: column; }
+      .nav-links { gap: 12px; }
+      .project-grid, .skills-grid { grid-template-columns: 1fr; }
+      section { padding: 52px 0; }
+      .contact-box { padding: 28px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav class="container">
+    <a class="logo" href="#home">Gargi<span>.</span>Analytics</a>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#fabric">Fabric</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Power BI · Microsoft Fabric · Data Analytics</div>
+        <h1>Turning Business Data into <span>Actionable Insights.</span></h1>
+        <p>
+          Hi, I'm Gargi Bhardwaj, a data analytics professional with
+          10+ years of experience in BI development, reporting,
+          data modelling and enterprise analytics. I turn complex
+          business requirements into clear, useful insights.
+        </p>
+        <div class="buttons">
+          <a class="btn btn-primary" href="#projects">Explore My Projects ↗</a>
+          <a class="btn btn-secondary" href="#contact">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="mini-label">Professional Profile</div>
+        <h2>Data. Insights. Impact.</h2>
+        <p>
+          Building scalable reporting solutions and helping
+          business teams make informed decisions.
+        </p>
+        <div class="stat-row">
+          <div class="stat">
+            <strong>10+</strong>
+            <span>Years of experience</span>
+          </div>
+          <div class="stat">
+            <strong>PL-300</strong>
+            <span>Microsoft certification</span>
+          </div>
+          <div class="stat">
+            <strong>BI</strong>
+            <span>Reporting & analytics</span>
+          </div>
+          <div class="stat">
+            <strong>Canada</strong>
+            <span>Open to opportunities</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Selected Work</div>
+        <h2>Power BI Portfolio</h2>
+        <p>
+          Sample project concepts demonstrating business intelligence,
+          data modelling, reporting and analytics skills.
+        </p>
+      </div>
+
+      <div class="filters">
+        <button class="filter active" data-filter="all">All Projects</button>
+        <button class="filter" data-filter="powerbi">Power BI</button>
+        <button class="filter" data-filter="finance">Finance</button>
+        <button class="filter" data-filter="fabric">Microsoft Fabric</button>
+      </div>
+
+      <div class="project-grid">
+
+        <article class="project-card" data-category="powerbi">
+          <div class="preview">
+            <div class="preview-label">Power BI · Sales</div>
+            <div>
+              <div class="preview-title">Sales Performance</div>
+              <div class="mock-chart">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="tag">Business Intelligence</span>
+            <h3>Sales Analytics Dashboard</h3>
+            <p>
+              Analyze sales trends, product performance, profitability
+              and regional results using interactive reports.
+            </p>
+            <a class="project-link" href="#contact">Project details ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="finance">
+          <div class="preview finance">
+            <div class="preview-label">Power BI · Finance</div>
+            <div>
+              <div class="preview-title">Financial Performance</div>
+              <div class="mock-chart">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="tag">Financial Analytics</span>
+            <h3>Budget vs. Actuals</h3>
+            <p>
+              Explore financial KPIs, expense trends, budget variance
+              and profit margins using sample data.
+            </p>
+            <a class="project-link" href="#contact">Project details ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="fabric">
+          <div class="preview fabric">
+            <div class="preview-label">Microsoft Fabric · Data Engineering</div>
+            <div>
+              <div class="preview-title">End-to-End Analytics</div>
+              <div class="mock-chart">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="tag">Microsoft Fabric</span>
+            <h3>Lakehouse to Power BI</h3>
+            <p>
+              Demonstrate a data pipeline from ingestion and
+              transformation to semantic modelling and reporting.
+            </p>
+            <a class="project-link" href="#fabric">View architecture ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="powerbi">
+          <div class="preview customers">
+            <div class="preview-label">Power BI · Customers</div>
+            <div>
+              <div class="preview-title">Customer Insights</div>
+              <div class="mock-chart">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="tag">Customer Analytics</span>
+            <h3>Customer Segmentation</h3>
+            <p>
+              Explore customer groups, purchasing patterns,
+              retention and product preferences.
+            </p>
+            <a class="project-link" href="#contact">Project details ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="powerbi">
+          <div class="preview hr">
+            <div class="preview-label">Power BI · HR</div>
+            <div>
+              <div class="preview-title">Workforce Analytics</div>
+              <div class="mock-chart">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="tag">People Analytics</span>
+            <h3>HR Insights Dashboard</h3>
+            <p>
+              Present workforce trends, department-level headcount,
+              hiring patterns and employee turnover.
+            </p>
+            <a class="project-link" href="#contact">Project details ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="finance">
+          <div class="preview finance">
+            <div class="preview-label">SQL · Power BI</div>
+            <div>
+              <div class="preview-title">Executive KPI Reporting</div>
+              <div class="mock-chart">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="tag">Executive Reporting</span>
+            <h3>Business KPI Scorecard</h3>
+            <p>
+              Illustrate business metrics, trends and performance
+              indicators in a consolidated executive view.
+            </p>
+            <a class="project-link" href="#contact">Project details ↗</a>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="notice">
+        Portfolio preview: these are illustrative project cards, not live Power BI reports.
+        Replace each preview with your own dashboard screenshot and add a working report
+        link after building the project. Clearly identify synthetic or sample data.
+      </div>
+    </div>
+  </section>
+
+  <section class="fabric-section" id="fabric">
+    <div class="container fabric-grid">
+      <div>
+        <div class="eyebrow">Modern Data Platform</div>
+        <h2 style="font-size:34px;color:#10243a;margin-bottom:14px">
+          Microsoft Fabric & Analytics
+        </h2>
+        <p style="color:#697789">
+          A sample architecture showing how business data can flow
+          from source systems into a governed analytics solution.
+        </p>
+
+        <div class="fabric-steps">
+          <div class="fabric-step">
+            <div class="step-number">01</div>
+            <div>
+              <strong>Data Ingestion</strong>
+              <p>Data Factory pipelines and source systems</p>
+            </div>
+          </div>
+          <div class="fabric-step">
+            <div class="step-number">02</div>
+            <div>
+              <strong>Lakehouse & OneLake</strong>
+              <p>Store and organize data for analytics</p>
+            </div>
+          </div>
+          <div class="fabric-step">
+            <div class="step-number">03</div>
+            <div>
+              <strong>Transform & Model</strong>
+              <p>SQL, notebooks and semantic models</p>
+            </div>
+          </div>
+          <div class="fabric-step">
+            <div class="step-number">04</div>
+            <div>
+              <strong>Power BI Reports</strong>
+              <p>Interactive dashboards and business insights</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fabric-visual">
+        <h3>Analytics Workflow</h3>
+        <div class="pipeline-node">Business Data Sources</div>
+        <div class="arrow">↓</div>
+        <div class="pipeline-node">Fabric Data Factory</div>
+        <div class="arrow">↓</div>
+        <div class="pipeline-node">OneLake · Lakehouse</div>
+        <div class="arrow">↓</div>
+        <div class="pipeline-node">Semantic Model</div>
+        <div class="arrow">↓</div>
+        <div class="pipeline-node">Power BI Dashboard</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Technical Expertise</div>
+        <h2>Skills & Technologies</h2>
+        <p>Technologies and methods used across BI and data analytics projects.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill">
+          <h3>Power BI</h3>
+          <p>Desktop, Service, DAX, Power Query, RLS, performance tuning</p>
+        </div>
+        <div class="skill">
+          <h3>Microsoft Fabric</h3>
+          <p>OneLake, Lakehouse, pipelines, notebooks, semantic models</p>
+        </div>
+        <div class="skill">
+          <h3>SQL & Data Modelling</h3>
+          <p>T-SQL, joins, window functions, star schemas, optimization</p>
+        </div>
+        <div class="skill">
+          <h3>Azure Data</h3>
+          <p>Azure SQL, Synapse, Data Factory, ADLS</p>
+        </div>
+        <div class="skill">
+          <h3>Data Transformation</h3>
+          <p>ETL/ELT, data quality, Power Query, incremental refresh</p>
+        </div>
+        <div class="skill">
+          <h3>Python</h3>
+          <p>Data preparation, analysis and exploratory modelling</p>
+        </div>
+        <div class="skill">
+          <h3>Cloud Platforms</h3>
+          <p>Snowflake and Azure-based analytics solutions</p>
+        </div>
+        <div class="skill">
+          <h3>Delivery & Leadership</h3>
+          <p>Requirements, stakeholder communication, testing and releases</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">About Me</div>
+        <h2>Business Understanding Meets Technical Delivery</h2>
+      </div>
+      <div class="about-box">
+        <p>
+          I am Gargi Bhardwaj, a data analytics professional with 10+ years
+          of experience in business intelligence, reporting and data solutions.
+        </p>
+        <p>
+          My experience includes translating stakeholder requirements into
+          dashboards, building data models, developing DAX measures,
+          optimizing report performance and supporting analytics delivery
+          from development through validation and release.
+        </p>
+        <p>
+          I am interested in Power BI, Microsoft Fabric, modern data
+          platforms and opportunities where data helps teams make better
+          business decisions.
+        </p>
+        <p><strong>Certification:</strong> Microsoft Certified: Power BI Data Analyst Associate (PL-300)</p>
+        <p><strong>Location:</strong> Surrey, British Columbia, Canada</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <h2>Let's Connect</h2>
+        <p>
+          I am exploring opportunities in Data Analytics, Power BI,
+          BI Development and Technical Leadership in Canada.
+          Feel free to connect with me professionally.
+        </p>
+        <div class="buttons" style="justify-content:center">
+          <a class="btn" href="https://github.com/gargi-bhardwaj-analytics"
+             target="_blank" rel="noopener noreferrer">GitHub Profile ↗</a>
+          <a class="btn" href="https://www.linkedin.com/"
+             target="_blank" rel="noopener noreferrer">Add LinkedIn URL ↗</a>
+          <a class="btn" href="#home">Back to Top ↑</a>
+        </div>
+        <p style="font-size:12px;margin-top:20px">
+          Replace the LinkedIn button URL with your personal LinkedIn profile.
+          Add your résumé link when your PDF is ready.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Gargi Bhardwaj · Power BI & Data Analytics Portfolio
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const filterButtons = document.querySelectorAll(".filter");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      filterButtons.forEach(item => item.classList.remove("active"));
+      button.classList.add("active");
+
+      const category = button.dataset.filter;
+
+      projectCards.forEach(card => {
+        card.hidden = category !== "all" &&
+                      card.dataset.category !== category;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
+
